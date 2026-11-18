@@ -716,6 +716,10 @@ MCP(Model Context Protocol)는 AI 앱이 당근의 기능을 도구로 호출하
 
 ## 개발·문서·라이선스
 
+Apple Silicon Mac에서는 저장소 루트에서 `./scripts/dev-mac.sh`를 실행하세요. `.node-version`과 `package.json`에 지정된 Node.js와 npm을 `.tmp/dev-toolchain`에 준비한 뒤 개발 앱을 엽니다. 첫 실행에 프로젝트 의존성이 없으면 자동으로 설치합니다. 의존성을 다시 설치하려면 `--install`, 도구 버전만 준비하려면 `--setup-only`를 붙이세요.
+
+macOS 네이티브 도구의 첫 빌드에는 Xcode와 `rust-toolchain.toml`에 지정된 Rust/Cargo가 필요합니다.
+
 Node.js·npm·Git을 준비한 뒤 실행합니다.
 
 ```sh

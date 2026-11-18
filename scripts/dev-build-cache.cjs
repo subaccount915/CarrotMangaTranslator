@@ -532,9 +532,8 @@ function fingerprintFiles(root, filePaths, salt, digestCacheFile) {
 function emittedTscOutputs(sourceRoot, inputFiles) {
   return inputFiles.flatMap((filePath) => {
     if (filePath.endsWith(".d.ts")) return [];
-    if (filePath.endsWith(".json")) {
-      return [join(dirname(sourceRoot), "out", relative(sourceRoot, filePath))];
-    }
+    // TypeScript emits only imported JSON. The output tree fingerprint already
+    // tracks all JSON it emitted, including files removed after a build.
     if (filePath.endsWith(".ts")) {
       const outputBase = join(
         dirname(sourceRoot),

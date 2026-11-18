@@ -563,7 +563,7 @@ describe("dev content build cache", () => {
     expect(cache.planCachedBuildStep(fixture.step).decision).toBe("skip");
   });
 
-  it("leaves model runtime bundles to the runtime-assets cache", () => {
+  it("fingerprints runtime JSON without requiring TypeScript to emit it", () => {
     const fixture = createElectronCompileCacheFixture();
     const inputFiles = fixture.step.getInputFiles();
     const requiredOutputs = fixture.step.getRequiredOutputFiles();
@@ -574,7 +574,7 @@ describe("dev content build cache", () => {
     expect(inputFiles).not.toContain(fixture.fontMatchingContract);
     expect(inputFiles).not.toContain(fixture.crossScriptProxyMarker);
     expect(inputFiles).not.toContain(fixture.crossScriptProxyManifest);
-    expect(requiredOutputs).toContain(
+    expect(requiredOutputs).not.toContain(
       join(
         fixture.root,
         "out",
